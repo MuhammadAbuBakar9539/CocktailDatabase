@@ -6,7 +6,7 @@ import com.example.cocktaildatabase.view.CategoryActivity
 import com.example.cocktaildatabase.view.fragments.CategoryFragment
 import dagger.Component
 
-@Component(modules = [CategoryModule::class], dependencies = [AppComponent::class])
+@Component(modules = [CategoryModule::class], dependencies = [RoomComponent::class, AppComponent::class])
 @ActivityScope
 interface CategoryComponent {
     fun inject(categoryFragment: CategoryFragment)

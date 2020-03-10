@@ -1,6 +1,7 @@
 package com.example.cocktaildatabase.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.example.cocktaildatabase.common.createToast
 import com.example.cocktaildatabase.di.component.DaggerCategoryComponent
 import com.example.cocktaildatabase.di.module.CategoryModule
 import com.example.cocktaildatabase.view.recyclerview.CategoryAdapter
+import com.example.cocktaildatabase.view.recyclerview.OnRecyclerViewItemClicked
 import com.example.cocktaildatabase.viewmodel.CategoryViewModel
 import kotlinx.android.synthetic.main.category_recycler_view.*
 import javax.inject.Inject
@@ -21,17 +23,13 @@ import javax.inject.Inject
 class CategoryFragment : Fragment() {
     @Inject
     lateinit var viewModel: CategoryViewModel
-    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view:View =inflater.inflate(R.layout.category_recycler_view, container, false)
-        recyclerView = view.findViewById(rv_category_list.id)
-        recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-        return view
+        return inflater.inflate(R.layout.category_recycler_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,8 +41,13 @@ class CategoryFragment : Fragment() {
         viewModel.getCategories()
 
         viewModel.getCategoryObservable().observe(viewLifecycleOwner, Observer { category ->
+            Log.i("myapp", "inside observer")
+            rv_category_list.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+            rv_category_list.adapter = CategoryAdapter(category,object: OnRecyclerViewItemClicked{
+                override fun onCategoryItemClicked(categoryName: String) {
+                }
+            })
 
-            rv_category_list.adapter = CategoryAdapter(category)
         })
 
         viewModel.getCategoryErrorObservable().observe(this, Observer { error ->

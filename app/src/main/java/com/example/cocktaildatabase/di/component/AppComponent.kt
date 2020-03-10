@@ -3,6 +3,7 @@ package com.example.cocktaildatabase.di.component
 import com.example.cocktaildatabase.MyApp
 import com.example.cocktaildatabase.common.network.Client
 import com.example.cocktaildatabase.di.module.NetworkModule
+import com.example.cocktaildatabase.model.db.CocktailDao
 import dagger.Component
 import javax.inject.Singleton
 

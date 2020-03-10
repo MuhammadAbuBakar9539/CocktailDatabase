@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/side_margin"
+    android:layout_marginTop="@dimen/side_margin"
+    android:layout_marginBottom="@dimen/side_margin"
+    app:cardCornerRadius="@dimen/side_margin"
+    app:cardElevation="@dimen/side_margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_drink_thumbnail"
+            android:layout_width="@dimen/drink_thumbnail_wh"
+            android:layout_height="@dimen/drink_thumbnail_wh"
+            android:padding="@dimen/side_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_drink_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/side_margin"
+            android:padding="@dimen/side_margin"
+            app:layout_constraintEnd_toEndOf="@+id/img_drink_thumbnail"
+            app:layout_constraintStart_toStartOf="@+id/img_drink_thumbnail"
+            app:layout_constraintTop_toBottomOf="@+id/img_drink_thumbnail"
+            tools:text="Drink Name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -7,6 +7,6 @@ import com.example.cocktaildatabase.model.CategoryModel
 
 @Database(entities = [CategoryModel::class], version = 1)
 @TypeConverters(ListConverter::class)
-abstract class CategoryDatabase : RoomDatabase (){
-    abstract fun categoryDao():CategoryDao
+abstract class CocktailDatabase : RoomDatabase (){
+    abstract fun cocktailDao():CocktailDao
 }

@@ -7,8 +7,8 @@ data class DrinksModel(
     @SerializedName("drinks") val drinks: List<Drink>
 ) {
     data class Drink(
-        @SerializedName("idDrink") val idDrink: String,
-        @SerializedName("strDrink") val strDrink: String,
-        @SerializedName("strDrinkThumb") val strDrinkThumb: String
+        val idDrink: String,
+        val strDrink: String,
+        val strDrinkThumb: String
     )
 }

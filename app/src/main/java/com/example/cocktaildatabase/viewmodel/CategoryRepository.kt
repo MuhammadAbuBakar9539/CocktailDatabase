@@ -1,6 +1,7 @@
 package com.example.cocktaildatabase.viewmodel
 
 import com.example.cocktaildatabase.model.CategoryModel
+import io.reactivex.Completable
 import io.reactivex.Single
 
 interface CategoryRepository {

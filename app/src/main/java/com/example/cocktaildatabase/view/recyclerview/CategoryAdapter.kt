@@ -9,22 +9,32 @@ import com.example.cocktaildatabase.common.layoutInflate
 import com.example.cocktaildatabase.model.CategoryModel
 import kotlinx.android.synthetic.main.category_item.view.*
 
-class CategoryAdapter(private val category: CategoryModel) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(
+    private val categoryList: CategoryModel,
+    private val onRecyclerViewItemClicked: OnRecyclerViewItemClicked
+) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(parent.layoutInflate(R.layout.category_item))
     }
 
     override fun getItemCount(): Int {
-        return category.drinks.size
+        return categoryList.category.size
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        holder.catName.text = category.drinks[position].strCategory
+        holder.categoryName.text = categoryList.category[position].strCategory
+        holder.bind(categoryList.category[position].strCategory)
     }
 
-    class CategoryViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
-        val catName:TextView = itemView.tv_category_name //Category Name
+    inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val categoryName: TextView = itemView.tv_category_name //Category Name
+
+        fun bind(categoryName: String) {
+            itemView.setOnClickListener {
+                onRecyclerViewItemClicked.onCategoryItemClicked(categoryName)
+            }
+        }
     }
 
 }

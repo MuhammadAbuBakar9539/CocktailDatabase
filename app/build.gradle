@@ -80,4 +80,7 @@ dependencies {
 
     //RxJava for RoomDatabase
     implementation "androidx.room:room-rxjava2:$room_version"
+
+    //Picasso
+    implementation "com.squareup.picasso:picasso:$picasso_version"
 }

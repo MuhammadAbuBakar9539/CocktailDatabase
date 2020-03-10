@@ -9,7 +9,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 
 @Dao
-interface CategoryDao {
+interface CocktailDao {
     @Query("SELECT * FROM tbl_categories")
     fun getCategoryDbList(): Single<CategoryModel>
 

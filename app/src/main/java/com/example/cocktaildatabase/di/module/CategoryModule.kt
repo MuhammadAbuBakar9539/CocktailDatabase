@@ -3,6 +3,7 @@ package com.example.cocktaildatabase.di.module
 import androidx.lifecycle.ViewModelProvider
 import com.example.cocktaildatabase.common.network.Client
 import com.example.cocktaildatabase.di.scope.ActivityScope
+import com.example.cocktaildatabase.model.db.CocktailDao
 import com.example.cocktaildatabase.view.CategoryActivity
 import com.example.cocktaildatabase.view.fragments.CategoryFragment
 import com.example.cocktaildatabase.viewmodel.CategoryRepository
@@ -28,7 +29,7 @@ class CategoryModule(private val categoryFragment: CategoryFragment) {
 
     @Provides
     @ActivityScope
-    fun provideRepository(client: Client): CategoryRepository {
-        return CategoryRepositoryImpl(client)
+    fun provideRepository(client: Client, cocktailDao: CocktailDao): CategoryRepository {
+        return CategoryRepositoryImpl(client, cocktailDao)
     }
 }

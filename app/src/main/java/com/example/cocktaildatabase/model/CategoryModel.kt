@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 data class CategoryModel(
     @PrimaryKey
     @SerializedName("drinks")
-    val drinks: List<Category>
+    val category: List<Category>
 ) {
     data class Category(
         @SerializedName("strCategory")

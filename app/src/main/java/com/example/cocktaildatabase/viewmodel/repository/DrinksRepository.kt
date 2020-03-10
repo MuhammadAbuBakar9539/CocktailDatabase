@@ -1,4 +1,4 @@
-package com.example.cocktaildatabase.viewmodel
+package com.example.cocktaildatabase.viewmodel.repository
 
 import com.example.cocktaildatabase.model.DrinksModel
 import io.reactivex.Single

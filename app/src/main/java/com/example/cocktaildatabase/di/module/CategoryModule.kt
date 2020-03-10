@@ -4,12 +4,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.cocktaildatabase.common.network.Client
 import com.example.cocktaildatabase.di.scope.ActivityScope
 import com.example.cocktaildatabase.model.db.CocktailDao
-import com.example.cocktaildatabase.view.CategoryActivity
 import com.example.cocktaildatabase.view.fragments.CategoryFragment
-import com.example.cocktaildatabase.viewmodel.CategoryRepository
-import com.example.cocktaildatabase.viewmodel.CategoryRepositoryImpl
+import com.example.cocktaildatabase.viewmodel.repository.CategoryRepository
+import com.example.cocktaildatabase.viewmodel.repository.CategoryRepositoryImpl
 import com.example.cocktaildatabase.viewmodel.CategoryViewModel
-import com.example.cocktaildatabase.viewmodel.CategoryViewModelFactory
+import com.example.cocktaildatabase.viewmodel.viewmodelfactory.CategoryViewModelFactory
 import dagger.Module
 import dagger.Provides
 
@@ -18,7 +17,9 @@ class CategoryModule(private val categoryFragment: CategoryFragment) {
     @Provides
     @ActivityScope
     fun provideViewModelFactory(repository: CategoryRepository): CategoryViewModelFactory {
-        return CategoryViewModelFactory(repository)
+        return CategoryViewModelFactory(
+            repository
+        )
     }
 
     @Provides
@@ -30,6 +31,9 @@ class CategoryModule(private val categoryFragment: CategoryFragment) {
     @Provides
     @ActivityScope
     fun provideRepository(client: Client, cocktailDao: CocktailDao): CategoryRepository {
-        return CategoryRepositoryImpl(client, cocktailDao)
+        return CategoryRepositoryImpl(
+            client,
+            cocktailDao
+        )
     }
 }

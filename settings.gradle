@@ -1,0 +1,2 @@
+rootProject.name='Cocktail Database'
+include ':app'

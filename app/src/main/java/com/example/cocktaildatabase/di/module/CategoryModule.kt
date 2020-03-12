@@ -32,8 +32,7 @@ class CategoryModule(private val categoryFragment: CategoryFragment) {
     @ActivityScope
     fun provideRepository(client: Client, cocktailDao: CocktailDao): CategoryRepository {
         return CategoryRepositoryImpl(
-            client,
-            cocktailDao
+            client, cocktailDao
         )
     }
 }

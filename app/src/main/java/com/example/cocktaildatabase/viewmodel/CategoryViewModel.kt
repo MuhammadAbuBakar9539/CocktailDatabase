@@ -12,9 +12,10 @@ class CategoryViewModel(private val repository: CategoryRepository) : ViewModel(
     private val categoryObservable = MutableLiveData<CategoryModel>()
     private val categoryErrorObservable = MutableLiveData<String>()
 
-    fun getCategories() {
+    fun getCategories(connected:Boolean) {
+        val observable = if (connected) repository.getCategoryList() else repository.getCategoryDbList()
         compositeDisposable.add(
-            repository.getCategoryList().subscribe(
+            observable.subscribe(
                 { category -> categoryObservable.value = category },
                 { categoryError -> categoryErrorObservable.value = categoryError.message })
         )

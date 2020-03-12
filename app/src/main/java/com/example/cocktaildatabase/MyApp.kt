@@ -3,6 +3,7 @@ package com.example.cocktaildatabase
 import android.app.Application
 import com.example.cocktaildatabase.di.component.AppComponent
 import com.example.cocktaildatabase.di.component.DaggerAppComponent
+import com.example.cocktaildatabase.di.module.CocktailDatabaseModule
 import com.example.cocktaildatabase.di.module.NetworkModule
 
 class MyApp :Application(){
@@ -12,6 +13,7 @@ class MyApp :Application(){
     }
 
     fun component():AppComponent{
-        return DaggerAppComponent.builder().networkModule(NetworkModule()).build()
+        return DaggerAppComponent.builder().networkModule(NetworkModule())
+            .cocktailDatabaseModule(CocktailDatabaseModule(this)).build()
     }
 }

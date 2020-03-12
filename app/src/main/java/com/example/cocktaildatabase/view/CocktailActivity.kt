@@ -5,13 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.cocktaildatabase.R
 import com.example.cocktaildatabase.common.addFragment
 import com.example.cocktaildatabase.view.fragments.CategoryFragment
-import kotlinx.android.synthetic.main.activity_category.*
+import com.example.cocktaildatabase.view.fragments.DrinksFragment
 
-class CategoryActivity : AppCompatActivity() {
+import kotlinx.android.synthetic.main.activity_cocktail.*
+
+class CocktailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_category)
+        setContentView(R.layout.activity_cocktail)
 
         title = getString(R.string.categories)
 

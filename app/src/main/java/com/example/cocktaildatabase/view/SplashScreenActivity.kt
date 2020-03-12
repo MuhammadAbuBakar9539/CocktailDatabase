@@ -22,7 +22,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 startActivity(
                     Intent(
                         this,
-                        CategoryActivity::class.java
+                        CocktailActivity::class.java
                     )
                 )
                 finish()

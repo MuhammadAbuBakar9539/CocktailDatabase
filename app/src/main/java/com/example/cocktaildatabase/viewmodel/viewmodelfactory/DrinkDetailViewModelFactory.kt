@@ -2,14 +2,14 @@ package com.example.cocktaildatabase.viewmodel.viewmodelfactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.cocktaildatabase.viewmodel.CategoryViewModel
-import com.example.cocktaildatabase.viewmodel.repository.CategoryRepository
+import com.example.cocktaildatabase.viewmodel.DrinkDetailViewModel
+import com.example.cocktaildatabase.viewmodel.repository.DrinkDetailRepository
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
-class CategoryViewModelFactory @Inject constructor(private val repository: CategoryRepository) :
+class DrinkDetailViewModelFactory @Inject constructor(private val repository: DrinkDetailRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return CategoryViewModel(repository) as T
+        return DrinkDetailViewModel(repository) as T
     }
 }

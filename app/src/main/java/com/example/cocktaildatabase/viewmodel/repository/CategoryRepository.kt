@@ -6,6 +6,6 @@ import io.reactivex.Single
 
 interface CategoryRepository {
     fun getCategoryList(): Single<CategoryModel>
-    /*fun getCategoryDbList(): Single<CategoryModel>
-    fun addCategoryList(categoryList: CategoryModel): Completable*/
+    fun getCategoryDbList(): Single<CategoryModel>
+    fun addCategoryList(categoryList: CategoryModel): Completable
 }

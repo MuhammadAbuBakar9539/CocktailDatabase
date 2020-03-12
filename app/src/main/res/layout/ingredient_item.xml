@@ -12,12 +12,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:id="@+id/cl_category_item"
-        android:background="@color/item_background"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/item_background">
 
         <TextView
-            android:id="@+id/tv_category_name"
+            android:id="@+id/tv_ingredient_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/side_margin"
@@ -25,7 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Category Name" />
+            tools:text="Ingredient Name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,6 +1,6 @@
 package com.example.cocktaildatabase.di.module
 
-import android.content.Context
+import android.app.Application
 import androidx.room.Room
 import com.example.cocktaildatabase.model.db.CocktailDao
 import com.example.cocktaildatabase.model.db.CocktailDatabase
@@ -9,12 +9,12 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class RoomModule {
+class CocktailDatabaseModule(private val application: Application) {
     @Provides
     @Singleton
-    fun provideDatabase(context: Context): CocktailDatabase {
+    fun provideDatabase(): CocktailDatabase {
         return Room.databaseBuilder(
-            context.applicationContext,
+            application.applicationContext,
             CocktailDatabase::class.java,
             "Cocktail_Database"
         ).fallbackToDestructiveMigration().build()
@@ -22,7 +22,7 @@ class RoomModule {
 
     @Provides
     @Singleton
-    fun provideCocktailDao(cocktailDatabase: CocktailDatabase):CocktailDao{
+    fun provideCocktailDao(cocktailDatabase: CocktailDatabase): CocktailDao {
         return cocktailDatabase.cocktailDao()
     }
 }

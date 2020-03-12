@@ -6,6 +6,7 @@ import com.example.cocktaildatabase.viewmodel.DrinksViewModel
 import com.example.cocktaildatabase.viewmodel.repository.DrinksRepository
 import javax.inject.Inject
 
+@Suppress("UNCHECKED_CAST")
 class DrinksViewModelFactory@Inject constructor(private val repository: DrinksRepository):ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return DrinksViewModel(repository)as T

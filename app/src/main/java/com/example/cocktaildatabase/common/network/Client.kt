@@ -2,7 +2,9 @@ package com.example.cocktaildatabase.common.network
 
 import com.example.cocktaildatabase.common.CATEGORY_ENDPOINT
 import com.example.cocktaildatabase.common.DRINKS_ENDPOINT
+import com.example.cocktaildatabase.common.DRINK_DETAIL_ENDPOINT
 import com.example.cocktaildatabase.model.CategoryModel
+import com.example.cocktaildatabase.model.DrinkDetailModel
 import com.example.cocktaildatabase.model.DrinksModel
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -13,6 +15,8 @@ interface Client {
     fun getCategoryList(@Query("c") list: String = "list"): Single<CategoryModel>
 
     @GET(DRINKS_ENDPOINT)
-    fun getDrinkList(@Query("c") categoryName: String): Single<DrinksModel>
+    fun getDrinkList(@Query("c") categoryName: String?): Single<DrinksModel>
 
+    @GET(DRINK_DETAIL_ENDPOINT)
+    fun getDrinkDetail(@Query("i") drinkId: String?): Single<DrinkDetailModel>
 }

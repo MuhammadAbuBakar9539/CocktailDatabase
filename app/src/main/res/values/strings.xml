@@ -2,4 +2,9 @@
     <string name="app_name">Cocktail Database</string>
     <string name="the_cocktail_database">The Cocktail Database</string>
     <string name="categories">Drinks Categories</string>
+    <string name="drink_category">Drink Category:</string>
+    <string name="drink_type">Drink Type: </string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions:</string>
+    <string name="select_category">Select Category</string>
 </resources>

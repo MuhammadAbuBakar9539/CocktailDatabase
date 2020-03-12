@@ -3,23 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/side_margin"
     android:layout_marginTop="@dimen/side_margin"
-    android:layout_marginBottom="@dimen/side_margin"
+    android:layout_marginEnd="@dimen/side_margin"
     app:cardCornerRadius="@dimen/side_margin"
     app:cardElevation="@dimen/side_margin">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_drink_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/item_background">
 
         <ImageView
             android:id="@+id/img_drink_thumbnail"
             android:layout_width="@dimen/drink_thumbnail_wh"
             android:layout_height="@dimen/drink_thumbnail_wh"
             android:padding="@dimen/side_margin"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

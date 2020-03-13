@@ -14,11 +14,11 @@ class DrinksRepositoryImpl @Inject constructor(private val client: Client, priva
     override fun getDrinkList(drinkCategory: String?): Single<DrinksModel> {
         return client.getDrinkList(drinkCategory).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSuccess { drinkList->addDrinkList(drinkList) }
+            .doAfterSuccess { drinkList->addDrinkList(drinkList) }
     }
 
-    override fun getDrinkDbList(categoryName: String?): Single<DrinksModel> {
-        return cocktailDao.getDrinkDbList(categoryName).subscribeOn(Schedulers.io())
+    override fun getDrinkDbList(drinkCategory: String?): Single<DrinksModel> {
+        return cocktailDao.getDrinkDbList(drinkCategory).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 

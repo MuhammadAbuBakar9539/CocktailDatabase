@@ -8,6 +8,6 @@ import io.reactivex.Single
 
 interface DrinksRepository {
     fun getDrinkList(drinkCategory: String?):Single<DrinksModel>
-    fun getDrinkDbList(categoryName: String?): Single<DrinksModel>
+    fun getDrinkDbList(drinkCategory: String?): Single<DrinksModel>
     fun addDrinkList(drinkList: DrinksModel): Completable
 }

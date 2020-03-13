@@ -11,14 +11,24 @@ class DrinksViewModel(private val repository: DrinksRepository):ViewModel() {
     private val compositeDisposable = CompositeDisposable()
     private val drinksObservable = MutableLiveData<DrinksModel>()
     private val drinksErrorObservable = MutableLiveData<String>()
+    private val drinkPbObservable = MutableLiveData<Boolean>()
+
+    fun progressBarObservable():LiveData<Boolean>{
+        return drinkPbObservable
+    }
 
     fun getDrinks(drinkCategory: String?, connected:Boolean) {
         val observable = if (connected) repository.getDrinkList(drinkCategory)
         else repository.getDrinkDbList(drinkCategory)
+        drinkPbObservable.value = true
         compositeDisposable.add(
             observable.subscribe(
-                { drink -> drinksObservable.value = drink },
-                { DrinksError -> drinksErrorObservable.value = DrinksError.message })
+                { drink ->
+                    drinkPbObservable.value = false
+                    drinksObservable.value = drink },
+                { DrinksError ->
+                    drinkPbObservable.value = false
+                    drinksErrorObservable.value = DrinksError.message })
         )
     }
 

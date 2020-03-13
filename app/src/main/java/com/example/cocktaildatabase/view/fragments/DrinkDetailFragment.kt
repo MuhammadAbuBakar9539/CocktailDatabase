@@ -57,5 +57,39 @@ class DrinkDetailFragment : Fragment() {
         viewModel.getDrinkDetailErrorObservable().observe(this, Observer { error ->
             activity?.createToast(error)
         })
+
+        viewModel.getDrinkDetailErrorObservable().observe(this, Observer { error ->
+            tv_category.visibility = View.GONE
+            tv_drink_type.visibility = View.GONE
+            tv_ingredient_text.visibility = View.GONE
+            tv_instruction.visibility = View.GONE
+            lil_drink_detail_error.visibility = View.VISIBLE
+            tv_drink_detail_errorMessage.text = error
+
+            tv_retry_drink_detail.setOnClickListener {
+                lil_drink_detail_error.visibility = View.GONE
+                tv_category.visibility = View.VISIBLE
+                tv_drink_type.visibility = View.VISIBLE
+                tv_ingredient_text.visibility = View.VISIBLE
+                tv_instruction.visibility = View.VISIBLE
+                viewModel.getDrinkDetail(drinkId, activity?.application?.isConnected()!!)
+            }
+        })
+
+        viewModel.progressBarObservable().observe(this, Observer { isShow ->
+            if (isShow) {
+                tv_category.visibility = View.GONE
+                tv_drink_type.visibility = View.GONE
+                tv_ingredient_text.visibility = View.GONE
+                tv_instruction.visibility = View.GONE
+                pb_drink_detail_progress_bar.visibility = View.VISIBLE
+            } else {
+                pb_drink_detail_progress_bar.visibility = View.GONE
+                tv_category.visibility = View.VISIBLE
+                tv_drink_type.visibility = View.VISIBLE
+                tv_ingredient_text.visibility = View.VISIBLE
+                tv_instruction.visibility = View.VISIBLE
+            }
+        })
     }
 }

@@ -13,6 +13,8 @@ class DrinkDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drink_detail)
 
+        title = getString(R.string.drink_detail)
+
         addFragment(DrinkDetailFragment(), fr_drink_detail.id )
     }
 }

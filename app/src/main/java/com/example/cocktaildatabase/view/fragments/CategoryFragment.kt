@@ -5,14 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cocktaildatabase.MyApp
 import com.example.cocktaildatabase.R
 import com.example.cocktaildatabase.common.BUNDLE_KEY
-import com.example.cocktaildatabase.common.createToast
 import com.example.cocktaildatabase.common.isConnected
 import com.example.cocktaildatabase.common.replaceFragmentInsideFragment
 import com.example.cocktaildatabase.di.component.DaggerCategoryComponent
@@ -20,7 +18,6 @@ import com.example.cocktaildatabase.di.module.CategoryModule
 import com.example.cocktaildatabase.view.recyclerview.CategoryAdapter
 import com.example.cocktaildatabase.view.recyclerview.OnCategoryRecyclerViewItemClicked
 import com.example.cocktaildatabase.viewmodel.CategoryViewModel
-import kotlinx.android.synthetic.main.category_item.*
 import kotlinx.android.synthetic.main.category_recycler_view.*
 import javax.inject.Inject
 
@@ -66,7 +63,21 @@ class CategoryFragment : Fragment() {
         })
 
         viewModel.getCategoryErrorObservable().observe(this, Observer { error ->
-            activity?.createToast(error)
+            lil_cat_error.visibility = View.VISIBLE
+            tv_cat_errorMessage.text = error
+
+            tv_retry.setOnClickListener {
+                lil_cat_error.visibility = View.GONE
+                viewModel.getCategories(activity?.application?.isConnected()!!)
+            }
+        })
+
+        viewModel.progressBarObservable().observe(this, Observer { isShow->
+            if (isShow){
+                pb_cat_progress_bar.visibility = View.VISIBLE
+            }else{
+                pb_cat_progress_bar.visibility = View.GONE
+            }
         })
     }
 }

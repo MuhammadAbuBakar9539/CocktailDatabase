@@ -21,8 +21,8 @@ interface CocktailDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addCategoryList(categoryList: CategoryModel): Completable
 
-    @Query("SELECT * FROM tbl_drinks WHERE 'c'= :categoryName")
-    fun getDrinkDbList(categoryName: String?): Single<DrinksModel>
+    @Query("SELECT * FROM tbl_drinks WHERE 'drinkCat'= :drinkCategory")
+    fun getDrinkDbList(drinkCategory: String?): Single<DrinksModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addDrinkList(drinkList: DrinksModel): Completable

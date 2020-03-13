@@ -95,6 +95,45 @@
         android:layout_marginTop="@dimen/side_margin"
         app:layout_constraintTop_toBottomOf="@+id/tv_ingredient_text" />
 
+    <ProgressBar
+        android:id="@+id/pb_drink_detail_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/lil_drink_detail_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_drink_detail_errorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:padding="@dimen/side_margin"
+            android:textColor="@color/colorWhite"
+            tools:ignore="UnusedAttribute"
+            tools:text="Error" />
+
+        <TextView
+            android:id="@+id/tv_retry_drink_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:justificationMode="inter_word"
+            android:padding="@dimen/side_margin"
+            android:text="@string/retry"
+            android:textColor="@color/colorWhite"
+            tools:ignore="UnusedAttribute" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tv_instruction"
         android:layout_width="wrap_content"
@@ -118,7 +157,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/tv_instruction"
-        tools:text="Category Name" />
+        tools:text="Category Name"
+        tools:ignore="UnusedAttribute" />
 
 
     <androidx.constraintlayout.widget.Guideline
